@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"strconv"
 )
 
 // Instructions:
@@ -65,19 +66,46 @@ func main() {
 	fmt.Println("MY Name = ", myName, " My Age = ", myAge, " My Salary = ", mySal)
 
 	// 14. Convert an integer to a float and vice versa.
+	var salaryFloat = float32(age)
+	fmt.Println(" SALARY as float = ", salaryFloat)
 
 	// 15. Use `const` with an untyped constant and assign it to different typed variables.
+	const MgrSalary = "34.5"
+	var mgrSalary1, _ = strconv.ParseFloat(MgrSalary, 64)
+	fmt.Println("MGR SALARY = ", mgrSalary1)
 
 	// 16. Declare and use a shadowed variable inside a function.
+	shadowfn := shadowVarUsage()
+	fmt.Println("1 call ", shadowfn())
+	fmt.Println("2 call ", shadowfn())
 
 	// 17. Use the new keyword to allocate memory for an integer and modify its value.
+	var number *int = new(int)
+	*number = 120
+	fmt.Println("NEW(int) ", *number)
 
 	// 18. Use shorthand assignment inside an `if` statement.
+	if i := 0; i > -1 {
+		fmt.Println("I is greater then -1 ")
+	}
 
 	// 19. Use a function closure to modify an outer variable.
+	callMe := func() {
+		*number++
+	}
+	callMe()
+	fmt.Println(" Value of Number = ", *number)
 
 }
 
 func getMultipleValues() (string, int, float64) {
 	return "BHAGWAN", 38, 678.7
+}
+
+func shadowVarUsage() func() int {
+	var i int = 0
+	return func() int {
+		i++
+		return i
+	}
 }
