@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bytes"
+	"errors"
 	"fmt"
+	"strings"
 
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
@@ -71,26 +74,57 @@ func main() {
 
 	// === Formatting Structs ===
 	// 16. Print a struct `{Name: "Alice", Age: 25}` using `%v`.
+	person := struct {
+		Name string
+		Age  int8
+	}{Name: "Alice", Age: 25}
+	fmt.Printf("\n%v", person)
 	// 17. Print the same struct with field names using `%+v`.
+	fmt.Printf("\n%+v", person)
 	// 18. Print the struct in Go syntax using `%#v`.
+	fmt.Printf("\n%#v", person)
 
 	// === Formatting Slices and Maps ===
 	// 19. Print a slice `[1, 2, 3, 4]` using `%v`.
+	var intSlice []int = []int{1, 2, 3, 4}
+	fmt.Printf("\n%v", intSlice)
+
 	// 20. Print a map `{"name": "Alice", "age": 25}` using `%v`.
+	var aliceMap map[string]interface{} = map[string]interface{}{
+		"name": "Alice", "age": 25,
+	}
+	fmt.Printf("\n%v", aliceMap)
 
 	// === Formatting Pointers ===
 	// 21. Print the memory address of an integer variable.
+	var intVar int = 10
+	var ptrIntVar *int = &intVar
+	fmt.Println("\n", ptrIntVar)
 
 	// === Formatting Type Information ===
 	// 22. Print the type of a variable using `%T`.
+	fmt.Printf("%T", intVar)
 
 	// === Error Formatting ===
 	// 23. Create a custom error message `"File not found"` and print it.
+	var err error = errors.New("File Not Found")
+	fmt.Println(err)
 
 	// === Advanced Formatting ===
 	// 24. Use `fmt.Fprint` to write "Hello, File!" to a string buffer.
+	var sb strings.Builder
+	sb.WriteString("Hello, File!")
+	fmt.Println(sb.String())
+	sb.Reset()
 	// 25. Use `fmt.Fprintln` to write "Buffered Output" to a string buffer.
+	bSBuffer := bytes.NewBufferString("")
+	fmt.Fprintln(bSBuffer, "Buffered Output")
 	// 26. Use `fmt.Fscanf` to read formatted input from a string.
+	var nm1 string
+	var age1 int8
+
+	fmt.Fscanf(strings.NewReader("Shiva 38"), "%s %d", &nm1, &age1)
+	fmt.Println(nm1, age1)
 
 	// using the go std library package for strings
 	// === Basic String Operations ===
