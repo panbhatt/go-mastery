@@ -108,7 +108,7 @@ func main() {
 	// === Error Formatting ===
 	// 23. Create a custom error message `"File not found"` and print it.
 	var err error = errors.New("File Not Found")
-	fmt.Println(err)
+	fmt.Println("\n", err)
 
 	// === Advanced Formatting ===
 	// 24. Use `fmt.Fprint` to write "Hello, File!" to a string buffer.
@@ -129,17 +129,29 @@ func main() {
 	// using the go std library package for strings
 	// === Basic String Operations ===
 	// 1. Clone the string "GoLang" and print it.
+	var golang string = "Golang"
+	fmt.Println("Clone -> ", strings.Clone(golang))
 	// 2. Compare two strings "hello" and "world" and print the result.
+	fmt.Println(strings.Compare("hello", "world"))
 
 	// === String Searching ===
 	// 3. Check if "Go" is contained in "I love Golang" and print the result.
+	var iLGolang = "I love Golang"
+	fmt.Println("Contain -> ", strings.Contains(iLGolang, "Go"))
 	// 4. Check if any character from "xyz" is found in "abcdef" and print the result.
+	fmt.Println("Contains Any ->", strings.ContainsAny("abcdef", "xyz"))
 	// 5. Check if the string contains a rune 'o' and print the result.
+	fmt.Println("Contains Rune ->", strings.ContainsRune("omygod", 'o'))
 	// 6. Count how many times "is" appears in "This is a test. This is only a test."
+	fmt.Println("Count -> ", strings.Count("This is a test. This is only a test", "is"))
 	// 7. Find the index of "fun" in "Golang is fun" and print it.
+	fmt.Println("INDEX -> ", strings.Index("Golang is fun", "fun"))
 	// 8. Find the last occurrence of "is" in "This is a test. This is only a test."
+	fmt.Println("Last occured -> ", strings.LastIndex("This is a test. This is only a test.", "is"))
 	// 9. Find the first index of any character in "xyz" inside "abcdef" and print it.
+	fmt.Println("First Index", strings.IndexAny("abcdef", "xyz"))
 	// 10. Find the last index of any character in "xyz" inside "abcdef" and print it.
+	fmt.Println("First Index", strings.LastIndexAny("abcdef", "xyz"))
 
 	// === String Modification ===
 	// 11. Cut the string "hello:world" at ":" and print both parts.
