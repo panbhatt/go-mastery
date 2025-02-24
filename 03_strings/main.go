@@ -155,12 +155,20 @@ func main() {
 
 	// === String Modification ===
 	// 11. Cut the string "hello:world" at ":" and print both parts.
+	fmt.Println(strings.Split("hello:world", ":"))
 	// 12. Cut the prefix "Hello " from "Hello World" and print the result.
+	fmt.Println(strings.CutPrefix("Hello World", "Hello "))
 	// 13. Cut the suffix " World" from "Hello World" and print the result.
+	fmt.Println(strings.CutSuffix("Hello World", " World"))
 	// 14. Replace "bad" with "good" in "This is a bad idea" and print it.
+	fmt.Println(strings.Replace("this is a bad idea", "bad", "good", 1))
 	// 15. Replace all occurrences of "a" with "o" in "banana" and print the result.
+	fmt.Println(strings.ReplaceAll("banana", "a", "o"))
 	// 16. Repeat the string "Go" 5 times and print the result.
+	fmt.Println(strings.Repeat("Go", 5))
 	// 17. Use `strings.Replacer` to replace "Java" with "Go" and "C++" with "Rust" in "I love Java and C++".
+	rp := strings.NewReplacer("Java", "Go", "C++", "Rust")
+	fmt.Println("Replacer ->", rp.Replace("I love Java and C++"))
 
 	// === String Splitting & Joining ===
 	// 18. Split "Go is simple and powerful" into words and print the slice.
