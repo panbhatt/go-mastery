@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"strings"
 
+	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
 )
@@ -172,15 +173,31 @@ func main() {
 
 	// === String Splitting & Joining ===
 	// 18. Split "Go is simple and powerful" into words and print the slice.
+	allWords := strings.FieldsSeq("Go is simple and powerful")
+	for word := range allWords {
+		fmt.Printf(": %s", word)
+	}
 	// 19. Use `FieldsFunc` to split "apple,banana,,orange" by commas but ignore empty parts.
+	commaSep := strings.FieldsFunc("apple,banana,orange", func(c rune) bool { return c == ',' })
+	fmt.Println()
+	for _, word := range commaSep {
+		fmt.Printf(": %s", word)
+	}
 	// 20. Use `SplitAfter` to split "one,two,three" after each comma.
+	fmt.Println("\n", strings.SplitAfter("apple,banana,orange", ","))
 	// 21. Use `SplitN` to split "apple-banana-orange" at "-" but limit the splits to 2 parts.
+	fmt.Println("\n", strings.SplitAfterN("apple,banana,orange", ",", 2))
 	// 22. Join a slice of strings `["Go", "is", "great"]` into a single string separated by spaces.
+	fmt.Println(strings.Join([]string{"go", "is", "Great"}, " "))
 
 	// === String Case Modifications ===
 	// 23. Convert "golang is fun" to title case and print it.
+	fmt.Println(strings.Title("golang is fun"))
+	fmt.Println(cases.Title(language.English, cases.Compact).String("golang is fun"))
 	// 24. Convert "Go Is Fun" to lowercase and print it.
+	fmt.Println(strings.ToLower("golang is fun"))
 	// 25. Convert "Go Is Fun" to uppercase and print it.
+	fmt.Println(strings.ToUpper("golang is fun"))
 
 	// === String Trimming ===
 	// 26. Trim all spaces from "  Go  " and print the result.
