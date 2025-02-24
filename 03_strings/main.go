@@ -201,11 +201,17 @@ func main() {
 
 	// === String Trimming ===
 	// 26. Trim all spaces from "  Go  " and print the result.
+	fmt.Println(strings.Trim("   Go    ", " "))
 	// 27. Trim only leading spaces from "    Hello World!" and print the result.
+	fmt.Println(strings.TrimLeft("   Hello World!", " "))
 	// 28. Trim only trailing spaces from "Hello World!    " and print the result.
+	fmt.Println(strings.TrimRight("Hello World!", " "))
 	// 29. Trim the prefix "Hello" from "Hello, World!" and print the result.
+	fmt.Println(strings.TrimPrefix("Hello, World!", "Hello"))
 	// 30. Trim the suffix " World!" from "Hello, World!" and print the result.
+	fmt.Println(strings.TrimSuffix("Hello, World!", "World!"))
 	// 31. Trim spaces using `TrimSpace` from "  Too much space  " and print the result.
+	fmt.Println(strings.TrimSpace("  Too much space   "))
 
 	// === UTF-8 and Rune Operations ===
 	// 32. Use `Map` to convert all vowels in "golang" to uppercase.
