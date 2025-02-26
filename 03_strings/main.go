@@ -215,9 +215,24 @@ func main() {
 
 	// === UTF-8 and Rune Operations ===
 	// 32. Use `Map` to convert all vowels in "golang" to uppercase.
+	fmt.Println(strings.Map(func(r rune) rune {
+		if r >= 97 && r <= 122 {
+			return rune(r - 32)
+		} else {
+			return r
+		}
+	}, "golang"))
 	// 33. Convert invalid UTF-8 sequences to valid ones using `ToValidUTF8`.
+	fmt.Println(strings.ToValidUTF8("SHIVARATRI \xc5 is today", " "))
 	// 34. Use `IndexFunc` to find the first vowel in "golang".
+	fmt.Println(strings.IndexFunc("golang", func(r rune) bool { return r == 'a' || r == 'e' || r == 'i' || r == 'o' || r == 'u' }))
 	// 35. Use `TrimFunc` to remove all leading numbers from "12345hello".
+	fmt.Println(strings.TrimFunc("12345hello", func(r rune) bool {
+		if r >= 48 && r <= 57 {
+			return true
+		}
+		return false
+	}))
 
 	// === Advanced String Builders ===
 	// 36. Use `strings.Builder` to build the string "GoLang is awesome!" efficiently and print it.
