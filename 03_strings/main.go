@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io"
 	"strings"
 
 	"golang.org/x/text/cases"
@@ -236,14 +237,59 @@ func main() {
 
 	// === Advanced String Builders ===
 	// 36. Use `strings.Builder` to build the string "GoLang is awesome!" efficiently and print it.
+	var sb3 strings.Builder
+	sb3.WriteString("Golang")
+	sb3.WriteRune(' ')
+	sb3.WriteString("is")
+	sb3.WriteRune(' ')
+	sb3.WriteString("Awesome")
+	fmt.Println("Final String -> ", sb3.String())
 	// 37. Use `strings.Builder` to append multiple lines efficiently.
 	// 38. Use `strings.Builder.Grow()` to preallocate memory for a string.
+	var sb4 strings.Builder
+	sb4.WriteString("SHIVA RATRI")
+	sb4.Grow(10)
+	sb4.WriteString(" PARVATI")
+	fmt.Println("SB 4 = ", sb4.String(), "\n")
 
 	// === String Reading ===
 	// 39. Use `strings.Reader` to read "Hello, Go!" byte by byte and print each byte.
+	sR := strings.NewReader("Hello, Go!")
+	for {
+		bt, ok := sR.ReadByte()
+		if ok == nil {
+			fmt.Print(bt, " ")
+		} else {
+			break
+		}
+	}
+
 	// 40. Use `strings.Reader` to read "Hello, Go!" rune by rune and print each rune.
+	fmt.Println("\n")
+	sR1 := strings.NewReader("Hello, Go!")
+	for {
+		bt, _, ok := sR1.ReadRune()
+		if ok == nil {
+			fmt.Print(string(rune(bt)), " ")
+		} else {
+			break
+		}
+	}
 	// 41. Use `strings.Reader.Seek()` to move the read position in "Hello, Go!".
+	fmt.Println("\n")
+	sR2 := strings.NewReader("Hello, Go!")
+	sR2.Seek(2, io.SeekCurrent)
+	for {
+		bt, _, ok := sR2.ReadRune()
+		if ok == nil {
+			fmt.Print(string(rune(bt)), " ")
+		} else {
+			break
+		}
+	}
 	// 42. Use `strings.Reader.Size()` to get the total size of "Hello, Go!".
+	sR3 := strings.NewReader("Hello, Go!")
+	fmt.Println("\n ", sR3.Size())
 
 	// === Miscellaneous Functions ===
 	// 43. Use `HasPrefix` to check if "Gopher" starts with "Go".
