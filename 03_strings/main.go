@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"strconv"
 	"strings"
 
 	"golang.org/x/text/cases"
@@ -293,21 +294,39 @@ func main() {
 
 	// === Miscellaneous Functions ===
 	// 43. Use `HasPrefix` to check if "Gopher" starts with "Go".
+	fmt.Println("Gopher has go ->", strings.HasPrefix("Gopher", "Go"))
 	// 44. Use `HasSuffix` to check if "Gopher" ends with "her".
+	fmt.Println("Gopher has her at last -> ", strings.HasSuffix("Gopher", "her"))
 	// 45. Use `CutPrefix` to remove "Go" from "Gopher".
-	// 46. Use `CutSuffix` to remove "er" from "Gopher".
+	gopherRemovePrefix, _ := strings.CutPrefix("Gopher", "Go")
+	fmt.Println("Gopher Remove prefix go ->", gopherRemovePrefix)
+	// 46. Use `CutSuffix` to remove "er" from "Gopher"
+	gopherRemoveSufix, _ := strings.CutSuffix("Gopher", "her")
+	fmt.Println("Gopher Remove Suffix her ->", gopherRemoveSufix)
 
 	// === Deprecated or Rare Functions ===
 	// 47. Use `Title()` to convert "go is fun" to title case (Deprecated, but still try it).
+	fmt.Println(strings.Title("go is fun"))
 
 	// using the go std library package for string conversion
 	// === Integer and Float Conversions ===
 	// 1. Convert the string "42" to an integer and print the result.
+	fortyTwoNumber, err := strconv.Atoi("42")
+	if err == nil {
+		fmt.Println(fortyTwoNumber)
+	}
 	// 2. Convert an integer 123 to a string and print it.
+	fmt.Println(strconv.Itoa(123))
 	// 3. Convert the string "3.14" to a float and print the result.
+	piInFloat, _ := strconv.ParseFloat("3.14", 64)
+	fmt.Println("PI in Float ", piInFloat)
 	// 4. Convert a float 9.81 to a string with 2 decimal places.
+	fmt.Println(fmt.Sprintf("%0.2f", 9.82))
 	// 5. Convert an integer to a hexadecimal string.
+	fmt.Printf("%0x\n", 100)
 	// 6. Convert a hexadecimal string "1a" to an integer.
+	a1InHex, _ := strconv.ParseInt("1a", 16, 32)
+	fmt.Println("1a -> HEX ", a1InHex)
 
 	// === Boolean Conversions ===
 	// 7. Convert the string "true" to a boolean and print the result.
